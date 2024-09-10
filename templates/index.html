@@ -4,20 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Random Movie Picker</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>Random Movie Picker</h1>
+
+    <!-- Button to pick a random movie -->
     <button id="randomMovieBtn">Pick a Random Movie</button>
     <p id="movieDisplay"></p>
 
+    <!-- Form to add a new movie -->
+    <h2>Add a Movie</h2>
+    <form id="addMovieForm">
+        <input type="text" id="movieInput" placeholder="Enter movie name">
+        <button type="submit">Add Movie</button>
+    </form>
+    <p id="addMovieResponse"></p>
+
+    <!-- List of movies -->
+    <h2>List of Movies</h2>
+    <ul id="movieList">
+        {% for movie in movies %}
+            <li>{{ movie }}</li>
+        {% endfor %}
+    </ul>
+
     <script>
+        // Event listener for picking a random movie
         document.getElementById('randomMovieBtn').addEventListener('click', async function() {
             const response = await fetch('/random-movie');
-            const movie = await response.text();
-            document.getElementById('movieDisplay').textContent = `Random Movie: ${movie}`;
+            const data = await response.json();
+            document.getElementById('movieDisplay').textContent = `Random Movie: ${data.movie}`;
+        });
+
+        // Event listener for adding a movie
+        document.getElementById('addMovieForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const movieInput = document.getElementById('movieInput').value;
+            const formData = new FormData();
+            formData.append('movie', movieInput);
+
+            const response = await fetch('/add-movie', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                document.getElementById('addMovieResponse').textContent = `${data.movie} added to the list!`;
+                const movieList = document.getElementById('movieList');
+                const newMovieItem = document.createElement('li');
+                newMovieItem.textContent = data.movie;
+                movieList.appendChild(newMovieItem);
+            } else {
+                document.getElementById('addMovieResponse').textContent = data.message;
+            }
+
+            document.getElementById('movieInput').value = '';  // Clear input
         });
     </script>
 </body>
