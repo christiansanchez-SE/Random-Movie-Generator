@@ -3,7 +3,7 @@ import random
 
 app = Flask(__name__)
 
-movies = ['Shawn of the Dead', 'Treasure Planet', 'Zombieland', 'Interstellar']
+movies = ['Shawn of the Dead', 'Treasure Planet', 'Zombieland', 'Interstellar', 'Monsters Inc.', 'Shrek', 'Nacho Libre']
 
 @app.route('/')
 def index():
