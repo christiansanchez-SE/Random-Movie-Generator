@@ -1,12 +1,32 @@
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+    background-color: rgb(103, 72, 155);
     text-align: center;
     padding: 20px;
 }
 
+.movieGene{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 35vw;
+    padding: 5px;
+    margin: 5px;
+    background-color: #ff4473;
+    border-width: 3px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.507);
+}
+
 h1, h2 {
-    color: #555;
+    color: white;
 }
 
 button {
@@ -31,6 +51,7 @@ input[type="text"] {
     padding: 10px;
     font-size: 16px;
     width: 200px;
+    border-radius: 5px;
 }
 
 ul {
@@ -40,5 +61,10 @@ ul {
 
 li {
     font-size: 18px;
-    color: #555;
+    color: white;
+}
+
+
+#movieDisplay{
+    color: white;
 }

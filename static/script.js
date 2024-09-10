@@ -7,7 +7,7 @@ document.getElementById('randomMovieBtn').addEventListener('click', async functi
     const data = await response.json();
     
     // Now, we update the HTML by showing the random movie in the <p> element with id "movieDisplay"
-    document.getElementById('movieDisplay').textContent = `Random Movie: ${data.movie}`;
+    document.getElementById('movieDisplay').textContent = `${data.movie}`;
 });
 
 // -- Spacer -- //

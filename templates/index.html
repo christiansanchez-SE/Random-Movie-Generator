@@ -10,13 +10,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
+<div class="movieGene">
     <h1>Random Movie Picker</h1>
 
 <!-- Spacer -->
 
+<div class="display-container">
     <!-- Button to pick a random movie -->
-    <button id="randomMovieBtn">Pick a Random Movie</button>
     <p id="movieDisplay"></p>
+    <button id="randomMovieBtn">Pick a Random Movie</button>
+</div>
 
 <!-- Spacer -->
 
@@ -24,7 +28,7 @@
         <h2>Add a Movie</h2>
         <form id="addMovieForm">
             <!-- Input field where users can type in a new movie -->
-            <input type="text" id="movieInput" placeholder="Enter movie name">
+            <input type="text" id="movieInput" class="movie-input smooth-type" placeholder="Enter movie name">
             <!-- Button to submit the form -->
             <button type="submit">Add Movie</button>
         </form>
@@ -45,5 +49,7 @@
 
     <!-- Link to the external JavaScript file -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
+</div>
 </body>
 </html>
