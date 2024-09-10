@@ -9,11 +9,11 @@
 </head>
 <body>
     <h1>Random Movie Picker</h1>
-
+<!-- Spacer -->
     <!-- Button to pick a random movie -->
     <button id="randomMovieBtn">Pick a Random Movie</button>
     <p id="movieDisplay"></p>
-
+<!-- Spacer -->
     <!-- Form to add a new movie -->
     <h2>Add a Movie</h2>
     <form id="addMovieForm">
@@ -21,7 +21,7 @@
         <button type="submit">Add Movie</button>
     </form>
     <p id="addMovieResponse"></p>
-
+<!-- Spacer -->
     <!-- List of movies -->
     <h2>List of Movies</h2>
     <ul id="movieList">
@@ -29,40 +29,8 @@
             <li>{{ movie }}</li>
         {% endfor %}
     </ul>
-
-    <script>
-        // Event listener for picking a random movie
-        document.getElementById('randomMovieBtn').addEventListener('click', async function() {
-            const response = await fetch('/random-movie');
-            const data = await response.json();
-            document.getElementById('movieDisplay').textContent = `Random Movie: ${data.movie}`;
-        });
-
-        // Event listener for adding a movie
-        document.getElementById('addMovieForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const movieInput = document.getElementById('movieInput').value;
-            const formData = new FormData();
-            formData.append('movie', movieInput);
-
-            const response = await fetch('/add-movie', {
-                method: 'POST',
-                body: formData
-            });
-
-            const data = await response.json();
-            if (data.success) {
-                document.getElementById('addMovieResponse').textContent = `${data.movie} added to the list!`;
-                const movieList = document.getElementById('movieList');
-                const newMovieItem = document.createElement('li');
-                newMovieItem.textContent = data.movie;
-                movieList.appendChild(newMovieItem);
-            } else {
-                document.getElementById('addMovieResponse').textContent = data.message;
-            }
-
-            document.getElementById('movieInput').value = '';  // Clear input
-        });
-    </script>
+<!-- Spacer -->
+    <!-- Link to the external JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
