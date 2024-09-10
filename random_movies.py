@@ -1,7 +1,7 @@
 import random
 
 # List of movies
-movies = ['Shawn of the Dead', 'Treasure Planet', 'Zombieland', 'Interstellar']
+movies = ['Shawn of the Dead', 'Treasure Planet', 'Zombieland', 'Interstellar','Lord of the Rings', 'Star Wars', 'Scot Pilgrim vs the World']
 
 # Function to pick a random movie
 def pick_random_movie():
