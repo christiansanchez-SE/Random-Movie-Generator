@@ -5,31 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Random Movie Picker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to an external CSS file for styling the page.
+         Flask's 'url_for' function dynamically generates the correct URL to the 'style.css' file in the 'static' folder. -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>Random Movie Picker</h1>
+
 <!-- Spacer -->
+
     <!-- Button to pick a random movie -->
     <button id="randomMovieBtn">Pick a Random Movie</button>
     <p id="movieDisplay"></p>
+
 <!-- Spacer -->
-    <!-- Form to add a new movie -->
-    <h2>Add a Movie</h2>
-    <form id="addMovieForm">
-        <input type="text" id="movieInput" placeholder="Enter movie name">
-        <button type="submit">Add Movie</button>
-    </form>
-    <p id="addMovieResponse"></p>
+
+        <!-- Form to add a new movie -->
+        <h2>Add a Movie</h2>
+        <form id="addMovieForm">
+            <!-- Input field where users can type in a new movie -->
+            <input type="text" id="movieInput" placeholder="Enter movie name">
+            <!-- Button to submit the form -->
+            <button type="submit">Add Movie</button>
+        </form>
+        <p id="addMovieResponse"></p>
+    
 <!-- Spacer -->
+
     <!-- List of movies -->
     <h2>List of Movies</h2>
     <ul id="movieList">
+        <!-- This is a Flask template loop -->
         {% for movie in movies %}
             <li>{{ movie }}</li>
         {% endfor %}
     </ul>
+
 <!-- Spacer -->
+
     <!-- Link to the external JavaScript file -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
